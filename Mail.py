@@ -15,8 +15,8 @@ class Mail():
         self.baglanti = sqlite3.connect("market.db")
         self.cursor = self.baglanti.cursor()
 
-    def user(self, name):
-        self.cursor.execute("Select * From Users where Name = ? ", (name,))
+    def user(self, user_name):
+        self.cursor.execute("Select * From Users where User_name = ? ", (user_name,))
         user = self.cursor.fetchone()
         user1 = Users.User(name=user[0], last_name=user[1], user_name=user[2], password=user[3], mail=user[4],
                      balance=user[5], )

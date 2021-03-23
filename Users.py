@@ -74,7 +74,8 @@ class Datum():
         balance = input("Your balance:")
         new_user = User(name, last_name, user_name, password, mail, balance)
         Datum().user_login(new_user)
-        Mail.Mail().user(new_user.name)
+        time.sleep(2)
+        Mail.Mail().user(new_user.user_name)
         time.sleep(2)
         print("Privilege welcome to shopping {} :)".format(new_user.name))
 
