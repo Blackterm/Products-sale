@@ -4,6 +4,7 @@ from email.mime.text import MIMEText
 import sys
 import sqlite3
 import Users
+import time
 
 class Mail():
 
@@ -49,6 +50,7 @@ class Mail():
 
             mail.sendmail(mesaj["From"], mesaj["To"], mesaj.as_string())
             print("OKEY...")
+            time.sleep(2)
             mail.close()
 
         except:
@@ -62,9 +64,10 @@ class Mail():
             name = input("Your user name:")
             self.cursor.execute("Select * From Users where User_name = ? ", (name,))
             user = self.cursor.fetchone()
-            user1 = Users.User(name=user[0], last_name=user[1], user_name=user[2], password=user[3], mail=user[4],
-                               balance=user[5], )
+
             if user:
+                user1 = Users.User(name=user[0], last_name=user[1], user_name=user[2], password=user[3], mail=user[4],
+                                   balance=user[5], )
                 mesaj = MIMEMultipart()
 
                 mesaj["From"] = "Sender's mail" #Sender's mail
@@ -94,7 +97,9 @@ class Mail():
 
                     mail.sendmail(mesaj["From"], mesaj["To"], mesaj.as_string())
                     print("OKEY...")
+                    time.sleep(2)
                     mail.close()
+
                     break
                 except:
                     sys.stderr.write(
