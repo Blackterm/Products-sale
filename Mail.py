@@ -45,8 +45,8 @@ class Mail():
 
             mail.starttls()
 
-            mail.login("info.teknolojimarket@gmail.com",
-                       "Muratcan_1997@")
+            mail.login("Sender's mail",
+                       "Password")
 
             mail.sendmail(mesaj["From"], mesaj["To"], mesaj.as_string())
             print("OKEY...")
